@@ -1,0 +1,14 @@
+node_modules
+src
+tsconfig.json
+package-lock.json
+*.log
+.DS_Store
+.env
+.env.local
+.nyc_output
+coverage
+.vscode
+.idea
+*.tgz
+*.tar.gz

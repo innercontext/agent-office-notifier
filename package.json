@@ -6,6 +6,7 @@
   "license": "MIT",
   "author": "Richard Anaya",
   "repository": "git@github.com:innercontext/agent-office-notifier.git",
+  "keywords": ["agent-office", "notifier", "email", "sqlite", "cron"],
   "bin": {
     "agent-office-notifier": "./dist/main.js"
   },
