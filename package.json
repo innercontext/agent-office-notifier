@@ -1,0 +1,36 @@
+{
+  "name": "agent-office-notifier",
+  "version": "0.0.0",
+  "description": "Standalone notifier for Agent Office",
+  "type": "module",
+  "license": "MIT",
+  "author": "Richard Anaya",
+  "repository": "git@github.com:innercontext/agent-office-notifier.git",
+  "bin": {
+    "agent-office-notifier": "./dist/main.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist",
+    "start": "tsx src/main.ts"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "better-sqlite3": "^12.6.2",
+    "commander": "^14.0.0",
+    "croner": "^10.0.1",
+    "postgres": "^3.4.0",
+    "resend": "^6.9.2"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/node": "^22.0.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.0.0"
+  }
+}
