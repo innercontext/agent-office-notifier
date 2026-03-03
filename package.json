@@ -22,14 +22,11 @@
     "node": ">=18.0.0"
   },
   "dependencies": {
-    "better-sqlite3": "^12.6.2",
     "commander": "^14.0.0",
     "croner": "^10.0.1",
-    "postgres": "^3.4.0",
     "resend": "^6.9.2"
   },
   "devDependencies": {
-    "@types/better-sqlite3": "^7.6.13",
     "@types/node": "^22.0.0",
     "tsx": "^4.21.0",
     "typescript": "^5.0.0"
