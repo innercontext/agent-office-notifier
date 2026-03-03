@@ -1,6 +1,7 @@
 import { type AgentOfficeNotifier } from "./notifier-lib.js";
 type Options = {
     sqlite?: string;
+    postgresUrl?: string;
     coworker?: string;
     toEmail?: string;
     resendApiKey?: string;

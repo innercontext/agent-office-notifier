@@ -17,7 +17,19 @@ export async function notifier(options, customNotifier) {
         console.error("Error: --coworker is required");
         process.exit(1);
     }
-    const sqlitePath = options.sqlite ?? "agent-office.db";
+    const sqlitePath = options.sqlite;
+    const postgresUrl = options.postgresUrl;
+    let dbFlag;
+    if (sqlitePath) {
+        dbFlag = `--sqlite "${sqlitePath}"`;
+    }
+    else if (postgresUrl) {
+        dbFlag = `--postgres "${postgresUrl}"`;
+    }
+    else {
+        // Default to SQLite if neither specified
+        dbFlag = `--sqlite "agent-office.db"`;
+    }
     const waitMinutes = parseInt(options.waitMinutes ?? "15", 10);
     const waitHours = waitMinutes / 60;
     let notify;
@@ -35,12 +47,12 @@ export async function notifier(options, customNotifier) {
     const check = async () => {
         try {
             // Fetch messages old enough to notify about
-            const cmd1 = `node ../agent-office/dist/index.js --sqlite "${sqlitePath}" list-messages-to-notify --coworker "${coworker}" --hours ${waitHours} --json`;
+            const cmd1 = `node ../agent-office/dist/index.js ${dbFlag} list-messages-to-notify --coworker "${coworker}" --hours ${waitHours} --json`;
             const output1 = execSync(cmd1, { encoding: 'utf8' });
             const qualifying = JSON.parse(output1.trim());
             if (qualifying.length === 0) {
                 // Check if there are any unread messages at all (just not old enough yet)
-                const cmd2 = `node ../agent-office/dist/index.js --sqlite "${sqlitePath}" list-messages-to-notify --coworker "${coworker}" --hours 0 --json`;
+                const cmd2 = `node ../agent-office/dist/index.js ${dbFlag} list-messages-to-notify --coworker "${coworker}" --hours 0 --json`;
                 const output2 = execSync(cmd2, { encoding: 'utf8' });
                 const allUnread = JSON.parse(output2.trim());
                 if (allUnread.length > 0) {
@@ -64,7 +76,7 @@ export async function notifier(options, customNotifier) {
             }
             const ids = qualifying.map((m) => m.id);
             const idsStr = ids.join(',');
-            const cmd3 = `node ../agent-office/dist/index.js --sqlite "${sqlitePath}" mark-messages-as-notified --ids ${idsStr} --json`;
+            const cmd3 = `node ../agent-office/dist/index.js ${dbFlag} mark-messages-as-notified --ids ${idsStr} --json`;
             execSync(cmd3, { encoding: 'utf8' });
         }
         catch (e) {

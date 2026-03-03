@@ -15,6 +15,7 @@ program
   .description('Start the notifier daemon')
   .requiredOption('--coworker <name>', 'Coworker name to monitor for unread messages')
   .option('--sqlite <path>', 'SQLite database file path', 'agent-office.db')
+  .option('--postgres-url <url>', 'PostgreSQL connection URL')
   .option('--to-email <email>', 'Email address to send notifications to')
   .option('--resend-api-key <key>', 'Resend API key for sending emails')
   .option('--domain <domain>', 'Email domain for from addresses')
