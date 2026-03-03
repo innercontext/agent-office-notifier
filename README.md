@@ -20,6 +20,7 @@ agent-office-notifier start --coworker "John Doe" --to-email "your@email.com" --
 
 - `--coworker <name>`: Coworker name to monitor for unread messages (required)
 - `--sqlite <path>`: SQLite database file path (default: "agent-office.db")
+- `--postgres-url <url>`: PostgreSQL connection URL (alternative to --sqlite)
 - `--to-email <email>`: Email address to send notifications to (required)
 - `--resend-api-key <key>`: Resend API key for sending emails (required)
 - `--domain <domain>`: Email domain for from addresses (required)
