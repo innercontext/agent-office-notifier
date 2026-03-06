@@ -1,12 +1,18 @@
 {
   "name": "agent-office-notifier",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Standalone notifier for Agent Office",
   "type": "module",
   "license": "MIT",
   "author": "Richard Anaya",
   "repository": "git@github.com:innercontext/agent-office-notifier.git",
-  "keywords": ["agent-office", "notifier", "email", "sqlite", "cron"],
+  "keywords": [
+    "agent-office",
+    "notifier",
+    "email",
+    "sqlite",
+    "cron"
+  ],
   "bin": {
     "agent-office-notifier": "./dist/main.js"
   },
@@ -22,6 +28,7 @@
     "node": ">=18.0.0"
   },
   "dependencies": {
+    "agent-office-notifier": "^0.0.0",
     "commander": "^14.0.0",
     "croner": "^10.0.1",
     "resend": "^6.9.2"
